@@ -1,0 +1,34 @@
+<!--ALERTA-->
+<div style="background-color: #007bff;font-weight: bold;color: #fff;padding: 10px;">
+    <strong ng-bind-html="titulo"></strong>
+</div>
+<br>
+<div class="alert alert-info" role="alert" ng-if="isEmpty(list)">SEM REGISTRO!</div>
+
+<!--LISTAGEM-->
+<div ng-show="!isEmpty(list)">
+    <div class="line-item-lista" ng-repeat="x in list"
+         style="padding: 14px 5px;"
+         ng-class="{'line-item-lista-first': $first}">
+        <div class="row">
+            <div class="col-2" ng-show="showimg == 'sim' && !isEmpty(x.imagens[0].url)">
+                <img src="{{x.imagens[0].url}}" class="img-thumbnail img-fluid">    
+            </div>
+            <div ng-class="{'col-12' : showimg != 'sim' || isEmpty(x.imagens[0].url), 'col-10' : showimg == 'sim' && !isEmpty(x.imagens[0].url)}">
+                <div>
+                    <a href="?&item={{x.id}}&p={{wppage}}"><strong ng-bind="x.nome"></strong></a>
+                    (<span ng-bind="x.nome_tipo" style="font-size: 13px;"></span>)
+                </div>
+                <div style="font-size: 13px; line-height: 18px">
+                    <i class="fa fa-map-marker" style="font-size: 14px; color: #999"></i> <span ng-bind="x.logradouro"></span>,
+                    <span ng-bind="x.numero"></span>,
+                    <span ng-bind="x.bairro"></span> - <span ng-bind="x.nome_cidade"></span>/<span ng-bind="x.up"></span> - <span ng-bind="x.cep"></span> 
+                </div>
+                <div style="font-size: 13px; line-height: 18px" ng-show="!isEmpty(x.contatos)">
+                    <i class="fa fa-phone" style="font-size: 12px; color: #999"></i> <span ng-bind="x.contatos"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <admin-gen-paginacao></admin-gen-paginacao>
+</div>

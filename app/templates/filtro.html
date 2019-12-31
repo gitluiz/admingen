@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-md-3 col-sm-12">
+            <span>Palavra-chave</span>
+            <input type="text"
+                   class="form-control"
+                   name="filtro_nome"
+                   name="filtro_nome"
+                   ng-model="filtro.nome" />
+        </div>
+        <div class="col-md-2 col-md-2 col-sm-12">
+            <span>do Tipo</span>
+            <select class="form-control"
+                    id="tipo_id"
+                    name="tipo_id"
+                    ng-model="filtro.tipo_id"
+                    ng-options="x.id as x.nome_tipo for x in tipos">
+                <option value="">TODOS</option>
+            </select>
+        </div>
+        <div class="col-md-2 col-md-2 col-sm-12">
+            <span>na Cidade</span>
+            <select class="form-control"
+                    id="cidade_id"
+                    name="cidade_id"
+                    ng-model="filtro.cidade_id"
+                    ng-options="x.id as x.nome_cidade for x in cidades">
+                <option value="">TODOS</option>
+            </select>
+        </div>
+        <div class="col-md-2 col-md-2 col-sm-12">
+            <span>Preço</span>
+            <select class="form-control"
+                    id="faixa_preco_id"
+                    name="faixa_preco_id"
+                    ng-model="filtro.faixa_preco_id"
+                    ng-options="x.id as x.nome_preco for x in faixa_precos">
+                <option value="">TODOS</option>
+            </select>
+        </div>
+        <div class="col-md-3 col-md-3 col-sm-12">
+            <div grid-container-free="">
+                <div>
+                    <span>&nbsp;</span>
+                    <button class="btn btn-primary btn-block" ng-click="limpa_filtrar()">
+                        <i class="fa fa-eraser"></i> Limpa
+                    </button>
+                </div>
+                <div>
+                    <span>&nbsp;</span>
+                    <button class="btn btn-primary btn-block" ng-click="filtrar(filtro)">
+                        <i class="fa fa-search"></i> Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

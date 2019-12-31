@@ -1,0 +1,25 @@
+<div class="container-fluid" ng-init="showMaisPreco = false;" style="margin: 10px 0">
+    <div class="row">
+        <div class="col-12">
+            <h4 style="color: blue; border-bottom: 1px solid;">Encontre Por Preço</h4>
+        </div>
+        <div class="col-12" ng-repeat="preco in filtroPreco" ng-show="$index < 6 || showMaisPreco">
+            <a href="#"  ng-click="filtrar({faixa_preco_id : preco.id})">
+                <strong ng-bind="preco.nome_preco"></strong> (<span ng-bind="preco.total" style="color: blue"></span>)    
+            </a>
+        </div>
+    </div>
+    <div class="row" ng-show="filtroPreco.length == 0">
+        <div class="col-12">
+            Nunhum registro encontrado!
+        </div>
+    </div>
+    <div class="row" ng-show="filtroPreco.length > 6">
+        <div class="col-12">
+            <a href="#" ng-click="showMaisPreco = !showMaisPreco;">
+                <span ng-bind="showMaisPreco ? 'Fechar' : 'Mais'"></span>
+                Preços
+            </a>
+        </div>
+    </div>
+</div>

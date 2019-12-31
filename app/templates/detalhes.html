@@ -1,0 +1,142 @@
+
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>
+                <div ng-bind="item.nome"></div>
+                <small style="color: #999">
+                    <span ng-bind="item.bairro"></span> - 
+                    <span ng-bind="item.nome_cidade"></span>
+                </small>
+            </h2>
+        </div>
+    </div>
+    <hr style="padding: 0; border-color: #ccc">
+    <div class="row">
+        <div class="col-md-5 col-sm-12">
+
+            <!-- IMAGENS -->
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" ng-class="{'active':$first}" ng-repeat="image in item.imagens">
+                        <img ng-src="{{image.url}}" class="d-block w-100" alt="{{image.file.name}}">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Próximo</span>
+                </a>
+            </div>
+            <div ng-repeat="image in item.imagens" style="padding: 5px 1px;display: inline-block;float: left;" ng-show="$index < 5">
+                <a href="{{image.url}}" data-lightbox="roadtrip">
+                    <img ng-src="{{image.url}}" alt="{{image.file.name}}" style="width: 60px">
+                </a>
+            </div>
+            <div ng-show="item.imagens.length > 5" class="float-right" style="padding: 5px 1px;font-size: 31px;text-align: center;line-height: 40px;border: 1px solid #ccc;width: 50px;height: 50px;">
+                <a href="{{item.imagens[5].url}}" data-lightbox="roadtrip">
+                    <span  ng-bind="item.imagens.length - 5"></span>+
+                </a>
+            </div>
+
+        </div>
+        <div class="col-md-7 col-sm-12">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div style="font-size: 18px; font-weight: bolder"> 
+                        <i class="fa fa-money " style="font-size: 20px"></i> Faixa de Preço
+                    </div>
+                    <span ng-bind="item.nome_preco"></span>
+                </div>
+                <div class="col-md-4 col-sm-12" ng-show="!isEmpty(item.contatos)">
+                    <div style="font-size: 18px; font-weight: bolder"> 
+                        <i class="fa fa-phone"></i> Contatos
+                    </div>
+                    <span ng-bind-html="item.contatos"></span>
+                </div>
+                <div class="col-md-4 col-sm-12"  ng-show="!isEmpty(item.email)">
+                    <div style="font-size: 18px; font-weight: bolder"> 
+                        <i class="fa fa-envelope"></i> E-mail
+                    </div>
+                    <span ng-bind="item.email"></span>
+                </div>
+            </div>
+            <div class="row" style="border-top: 1px solid #ccc; padding-top: 5px; margin-top: 10px">
+                <div class="col-md-6 col-sm-12">
+                    <div style="font-size: 20px; font-weight: bolder"> 
+                        Estrutura e Equipe
+                    </div>
+                    <ul style="list-style: none">
+                        <li ng-repeat="est in item.inclusoes.estruturas">
+                            <img ng-src="{{est.imagens[0].url}}" class="img-fluid" style="max-width: 18px" align="left"/> 
+                            <span ng-bind="est.nome_estrutura" ng-show="!isEmpty(est.nome_estrutura)" style="line-height: 20px;vertical-align: top;margin-left: 10px;"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div style="font-size: 20px; font-weight: bolder"> 
+                        Instalações e Perfil da Casa
+                    </div>
+                    <ul style="list-style: none">
+                        <li ng-repeat="inst in item.inclusoes.instalacoes">
+                            <img ng-src="{{inst.imagens[0].url}}" class="img-fluid" style="max-width: 18px" align="left"/> 
+                            <span ng-bind="inst.nome_instalacao" ng-show="!isEmpty(inst.nome_instalacao)" style="line-height: 20px;vertical-align: top;margin-left: 10px;"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="margin: 0; padding: 0; border-color: #ccc">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div style="font-size: 20px; font-weight: bolder"> 
+                        <i class="fa fa-map-marker"></i> Endereço
+                    </div>
+                    <div>
+                        <span ng-bind="item.logradouro"></span>,
+                        <span ng-bind="item.numero"></span>,
+                        <span ng-bind="item.bairro"></span> - <span ng-bind="item.nome_cidade"></span>
+                        /<span ng-bind="item.up"></span> 
+                        <span ng-bind="item.cep"></span> 
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12" ng-show="!isEmpty(item.horarios_visita)">
+                    <div style="font-size: 20px; font-weight: bolder"> 
+                        <i class="fa fa-clock-o"></i> Horário de Visitação
+                    </div>
+                    <div>
+                        <span ng-bind="item.horarios_visita"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12" style="margin-top: 10px">
+            <div class="row">
+                <div class="col-md-6 col-sm-12" ng-show="!isEmpty(item.descricao)">
+                    <div style="font-size: 20px; font-weight: bolder"> 
+                        <i class="fa fa-home"></i> Sobre a Casa
+                    </div>
+                    <div>
+                        <span ng-bind-html="item.descricao"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12" ng-show="!isEmpty(item.informacoes_adicional)">
+                    <div style="font-size: 20px; font-weight: bolder"> 
+                        <i class="fa fa-info-circle"></i> Informações Adicionais
+                    </div>
+                    <div>
+                        <span ng-bind-html="item.informacoes_adicional"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<pre ng-bind="item | json"></pre>-->

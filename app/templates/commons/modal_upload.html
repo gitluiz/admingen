@@ -1,0 +1,28 @@
+<form name="myFormModal" id="myFormModal" ng-submit="save(myFormModal)">
+    <div class="modal-header">
+        <h5 class="modal-title" id="mainModalLabel" ng-bind="title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-info" ng-if="isEmpty(item.imagens)">SEM IMAGEM</div>
+        <div class="line-item-lista" ng-class="{'line-item-lista-first': $first}" ng-repeat="img in item.imagens">
+            <div grid-container-free="80px 1fr 60px" ng-if="!isEmpty(item.imagens)">
+                <img src="{{img.url || '#'}}" alt="{{img.file.name}}" width="75"/>
+                <div>
+                    <span ng-bind="img.file.name"></span>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-danger btn-sm" ng-click="deleteFile(img.file, $index)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="some-queue-admingen"></div>
+    </div>
+    <div class="modal-footer" ng-show="isEmpty(item.imagens) || !config.isUnique">
+        #_modal_content
+    </div>
+</form>

@@ -1,0 +1,160 @@
+<div>
+    <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" ng-model="item.nome" required>
+    </div>
+    <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" class="form-control" id="email" name="email" ng-model="item.email" required>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label>Tipo</label>
+        <select class="form-control"
+                style="height: 38px;"
+                id="tipo_id"
+                name="tipo_id"
+                ng-model="item.tipo_id"
+                ng-options="x.id as x.nome_tipo for x in tipos">
+            <option value="">Nenhum</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Faixa Preço</label>
+        <select class="form-control"
+                style="height: 38px;"
+                id="faixa_preco_id"
+                name="faixa_preco_id"
+                ng-model="item.faixa_preco_id"
+                ng-options="x.id as x.nome_preco for x in faixa_precos">
+            <option value="">Nenhum</option>
+        </select>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label>Estrutura</label>
+        <select class="form-control"
+                style="height: 38px;"
+                id="estrutura"
+                name="estrutura"
+                ng-model="estrutura"
+                ng-init="estrutura = null;"
+                ng-change="inserirInfo(estrutura, 'estruturas')"
+                ng-options="x as x.nome_estrutura for x in estruturas">
+            <option value="">Nenhum</option>
+        </select>
+        <div ng-show="!isEmpty(item.inclusoes.estruturas)">
+            <div class="line-item-lista" ng-repeat="x in item.inclusoes.estruturas"
+                 ng-show="!x.isRemove"
+                 ng-class="{'line-item-lista-first': $first}">
+                <div grid-container-free="1fr 150px" style="line-height: 26px">
+                    <span ng-bind="x.nome_estrutura"></span>
+                    <div class="text-right">
+                        <a href="#" ng-click="x.isRemove = true;">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label>Instalações</label>
+        <select class="form-control"
+                style="height: 38px;"
+                id="instalacao"
+                name="instalacao"
+                ng-model="instalacao"
+                ng-init="instalacao = null;"
+                ng-change="inserirInfo(instalacao, 'instalacoes')"
+                ng-options="x as x.nome_instalacao for x in instalacoes">
+            <option value="">Nenhum</option>
+        </select>
+        <div ng-show="!isEmpty(item.inclusoes.instalacoes)">
+            <div class="line-item-lista" ng-repeat="x in item.inclusoes.instalacoes"
+                 ng-show="!x.isRemove"
+                 ng-class="{'line-item-lista-first': $first}">
+                <div grid-container-free="1fr 150px" style="line-height: 26px">
+                    <span ng-bind="x.nome_instalacao"></span>
+                    <div class="text-right">
+                        <a href="#" ng-click="x.isRemove = true;">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label>Descrição</label>
+        <textarea rows="5" class="form-control" id="descricao" name="descricao" ng-model="item.descricao"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Informações Adicional</label>
+        <textarea rows="2" class="form-control" id="informacoes_adicional" name="informacoes_adicional" ng-model="item.informacoes_adicional"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Contatos</label>
+        <textarea rows="2" class="form-control" id="contatos" name="contatos" ng-model="item.contatos"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Horário Visita</label>
+        <textarea rows="2" class="form-control" id="horarios_visita" name="horarios_visita" ng-model="item.horarios_visita"></textarea>
+    </div>
+    <hr>
+    <h4>Endereço</h4>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label>Logradouro</label>
+                <input type="text" class="form-control" id="logradouro" name="logradouro" ng-model="item.logradouro" required>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label>Nº</label>
+                <input type="text" class="form-control" id="numero" name="numero" ng-model="item.numero">
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="form-group">
+                <label>Bairro</label>
+                <input type="text" class="form-control" id="bairro" name="bairro" ng-model="item.bairro">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label>Cidade</label>
+                <select class="form-control"
+                        style="height: 38px;"
+                        id="cidade_id"
+                        name="cidade_id"
+                        ng-model="item.cidade_id"
+                        ng-options="x.id as x.nome_cidade for x in cidades">
+                    <option value="">Nenhum</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label>UF</label>
+                <select class="form-control"
+                        style="height: 38px;"
+                        id="uf"
+                        name="uf"
+                        ng-model="item.up"
+                        ng-options="x.sigla as x.nome for x in estadosBrasil">
+                    <option value="">Nenhum</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label>CEP</label>
+                <input type="text" class="form-control" id="cep" name="cep" ng-model="item.cep">
+            </div>
+        </div>
+    </div>
+</div>

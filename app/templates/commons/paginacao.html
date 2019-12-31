@@ -1,0 +1,19 @@
+<nav aria-label="Page navigation example" ng-show="pagination.length > 1">
+  <ul class="pagination">
+    <li class="page-item">
+        <a class="page-link" href="#" ng-click="loadList(0)" ng-show="page > 0"><<</a>
+    </li>
+    
+    <li class="page-item"><a class="page-link" ng-click="loadList(page - 1)" ng-show="page > 0" href="#"><</a></li>
+    
+    <li class="page-item" ng-repeat="p in pagination" ng-class="{'active' : p.numero == page}">
+        <a class="page-link" href="#" ng-click="loadList(p.numero)" ng-bind="p.label"></a>
+    </li>
+    
+    <li class="page-item"><a class="page-link" ng-click="loadList(page + 1)" ng-show="page < totalPaginas" href="#">></a></li>
+    
+    <li class="page-item">
+        <a class="page-link" href="#" ng-click="loadList(totalPaginas)" ng-show="page < totalPaginas">>></a>
+    </li>
+  </ul>
+</nav>

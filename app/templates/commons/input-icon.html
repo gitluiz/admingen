@@ -1,0 +1,17 @@
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ícones
+    </button>
+    <div class="dropdown-menu lacc-scroll" aria-labelledby="dropdownMenuButton">
+        <div ng-click="setIcon(font)" class="float-left"
+             style="text-align: center;width: 100px;height: 73px;border: 1px solid #000;margin: 2px; cursor: pointer"
+             ng-repeat="font in fontAwersome">
+            <div>
+                <i class="fa fa-{{font.id}} fas fas-{{font.id}}" style="width: 28px;line-height: 45px;;font-size: 28px"></i>
+            </div>
+            <div>
+                <span ng-bind="font.name|limitTo:11"></span>
+            </div>
+        </div>
+    </div>
+</div>

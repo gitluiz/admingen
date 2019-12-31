@@ -1,0 +1,25 @@
+<div class="container-fluid" ng-init="showMaisTipos = false;" style="margin: 10px 0">
+    <div class="row">
+        <div class="col-12">
+            <h4 style="color: blue; border-bottom: 1px solid;">Encontre Por Tipo</h4>
+        </div>
+        <div class="col-12" ng-repeat="tipo in filtroTipo" ng-show="$index < 6 || showMaisTipos">
+            <a href="#"  ng-click="filtrar({tipo_id : tipo.id})">
+                <strong ng-bind="tipo.nome_tipo"></strong> (<span ng-bind="tipo.total" style="color: blue"></span>)    
+            </a>
+        </div>
+    </div>
+    <div class="row" ng-show="filtroTipo.length == 0">
+        <div class="col-12">
+            Nunhum registro encontrado!
+        </div>
+    </div>
+    <div class="row" ng-show="filtroTipo.length > 6">
+        <div class="col-12">
+            <a href="#" ng-click="showMaisTipos = !showMaisTipos;">
+                <span ng-bind="showMaisTipos ? 'Fechar' : 'Mais'"></span>
+                Tipos
+            </a>
+        </div>
+    </div>
+</div>

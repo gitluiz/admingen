@@ -1,0 +1,25 @@
+<admin-gen-novo table="{{table}}" action="loadList()" label="Novo"></admin-gen-novo>
+<br>
+<br>
+<!--ALERTA-->
+<div class="alert alert-info" role="alert" ng-if="isEmpty(list)">SEM REGISTRO!</div>
+
+<!--LISTAGEM-->
+<div ng-show="!isEmpty(list)">
+    <div grid-container-free="1fr 150px" class="list-header">
+        <span>Nome</span>
+        <div>&nbsp;</div>
+    </div>
+    <div class="line-item-lista" ng-repeat="x in list"
+         ng-class="{'line-item-lista-first': $first}">
+
+        <div grid-container-free="1fr 150px" style="line-height: 26px">
+            <span ng-bind="x.nome_preco"></span>
+            <div class="text-right">
+                <admin-gen-edit id="x.id" table="{{table}}" item="x"></admin-gen-edit>
+                <admin-gen-remove id="x.id" table="{{table}}" item="x" action="loadList()" label=""></admin-gen-remove>
+            </div>
+        </div>
+    </div>
+    <admin-gen-paginacao></admin-gen-paginacao>
+</div>

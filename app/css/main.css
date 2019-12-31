@@ -1,0 +1,28 @@
+.line-item-lista{
+    border-top: 1px solid #bbb;
+    padding: 2px 0;
+}
+
+.line-item-lista:hover{
+    font-weight: bold;
+    background-color: rgba(255, 194, 0, 0.27);
+}
+.line-item-lista .not-hover:hover{
+    font-weight: initial;
+    background-color: rgba(255, 194, 0, 0.27);
+}
+
+.line-item-lista-first{
+    border-top: none;
+}
+
+.list-header{
+    border-bottom: 3px solid #999;
+}
+
+.lacc-scroll {
+    height: 360px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: nowrap;
+}
